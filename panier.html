@@ -72,11 +72,12 @@
         <div class="form pt-3">
             <form id="panier_form">
                 <fieldset>
-                    <legend class="text-primary">Votre identité</legend>
-                    <div class="form-group pb-2">
-                        <label for="civilite"> Civilité </label>
-                        <input type="radio" name="choix" value="Oui" checked="checked" /> Madame
-                        <input type="radio" name="choix" value="Non" /> Monsieur
+                    <legend class="text-primary pb-2">Votre identité</legend>
+                    <div class="civilite form-group pb-2">
+                            <input type="radio" name="choix" value="Madame" checked="checked" />
+                            <label for="Madame">Madame</label>
+                            <input type="radio" name="choix" value="Monsieur" />
+                            <label for="Monsieur">Monsieur</label>
                     </div>
                     <div class="form-group pb-2">
                         <label for="nom"> Nom </label>
@@ -117,26 +118,26 @@
                 </fieldset>
 
                 <fieldset>
-                    <legend class="text-primary">Paiement</legend>
-                    <div class="paiement_detail">
+                    <legend class="text-primary">Information de Paiement</legend>
+                    <div class="paiement_detail pb-2">
                         <label for=numero_de_carte>Numéro de la carte</label>
                         <input id=numero_de_carte name=numero_de_carte type=text required>
                         
                     </div>
-                    <div class="paiement_detail"> 
+                    <div class="paiement_detail pb-2"> 
                         <label for=securite>Code de sécurité</label>
                         <input id=securite name=securite type=text required>
                         
                     </div>
-                    <div class="paiement_detail"> 
+                    <div class="paiement_detail pb-2"> 
                         <label for=nom_titulaire>Nom du titulaire de la carte</label>
                         <input id=nom_titulaire name=nom_titulaire type=text placeholder="Dubois Anthony" cols="40" required>
                 </fieldset>
 
                 <div class="basket-confirm text-center p-4">
-                    <button class="btn btn-dark stretched-link p-4" type="submit">
+                    <a class="btn btn-dark stretched-link p-4" href="confirmation.html">
                         Je valide mon panier et mes informations
-                    </button>
+                    </a>
                 </div>
             </form>
         </div>
