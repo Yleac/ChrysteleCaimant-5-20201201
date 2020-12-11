@@ -51,98 +51,101 @@
         </header>
 
         <!-- corps de la page -->
-        <main class="container">
-            <div class="row">
-                <div class="col mt-4 mb-4">
-                    <h1>Récapitulatif de votre panier</h1>
+        <main>
+            <!-- recap panier -->
+            <section class="container">   
+                <div class="row">
+                    <div class="col mt-4 mb-4">
+                        <h1>Récapitulatif de votre panier</h1>
+                    </div>
                 </div>
-            </div>
-            <div class="row" id="basket-resume">
-                <div class="container text-center">
-                    <div class="card shadow p-3 mb-5 bg-white rounded">
-                        <p id="panierVide">Votre panier est vide</p>
-                        <div class="card-body">
-                            <p class="card-basket">et la marmotte...</p>
+                <div class="row" id="basket-resume">
+                    <div class="container text-center">
+                        <div class="card shadow p-3 mb-5 bg-white rounded">
+                            <p id="panierVide">Votre panier est vide</p>
+                            <div class="card-body">
+                                <p class="card-basket">A bientôt !</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
         
-        <!-- formulaire coordonnées -->
-        <div class="form pt-3">
-            <form id="panier_form">
-                <fieldset>
-                    <legend class="text-primary pb-2">Votre identité</legend>
-                    <div class="civilite form-group pb-2">
-                            <input type="radio" name="choix" value="Madame" checked="checked" />
-                            <label for="Madame">Madame</label>
-                            <input type="radio" name="choix" value="Monsieur" />
-                            <label for="Monsieur">Monsieur</label>
-                    </div>
-                    <div class="form-group pb-2">
-                        <label for="nom"> Nom </label>
-                        <input type="text" id="nom" name="nom" placeholder="Dubois" class="form-control" required/>
-                    </div>
-                    <div class="form-group pb-2">
-                        <label for="prenom"> Prénom </label>
-                        <input type="text" id="prenom" name="prenom" placeholder="Anthony" class="form-control" required/>
-                    </div>
-                    <div class="form-group pb-2">
-                        <label for="email"> Email </label>
-                        <input type="email" id="email" name="email" placeholder="anthonydubois@mail.com" class="form-control" required/>
-                    </div>
-                </fieldset>
+            <!-- formulaire coordonnées -->
+            <section class="container">  
+                <div class="form pt-3">
+                    <form id="panier_form">
+                        <fieldset>
+                            <legend class="text-primary pb-2">Votre identité</legend>
+                            <div class="civilite form-group pb-2">
+                                    <input type="radio" name="choix" value="Madame" checked />
+                                    <label for="Madame">Madame</label>
+                                    <input type="radio" name="choix" value="Monsieur" />
+                                    <label for="Monsieur">Monsieur</label>
+                            </div>
+                            <div class="form-group pb-2">
+                                <label for="nom"> Nom </label>
+                                <input class="form-control" id="nom"type="text"  name="nom" placeholder="Dubois" required/>
+                            </div>
+                            <div class="form-group pb-2">
+                                <label for="prenom"> Prénom </label>
+                                <input class="form-control" id="prenom"type="text"  name="prenom" placeholder="Anthony" required/>
+                            </div>
+                            <div class="form-group pb-2">
+                                <label for="email"> Email </label>
+                                <input class="form-control" id="email"type="email"  name="email" placeholder="anthonydubois@mail.com" required/>
+                            </div>
+                        </fieldset>
 
-                <fieldset>
-                    <legend class="text-primary"> Votre adresse de livraison</legend>
-                    <div class="form-group pb-2">
-                        <label for="adresse"> Numéro et Rue </label>
-                        <input type="text" id="adresse" name="adresse" placeholder="14 rue bleue" class="form-control" required/>
-                    </div>
-                    <div class="form-group pb-2">
-                        <label for="code_postal"> Code Postal </label>
-                        <input type="text" id="name" name="name" placeholder="75000" class="form-control" required/>
-                    </div>
-                    <div class="form-group pb-2">
-                        <label for="ville"> Ville </label>
-                        <input type="text" id="ville" name="ville" placeholder="Paris" class="form-control" required/>
-                    </div>
-                    <div class="form-group pb-2">
-                        <label for="message">
-                            Informations complémentaires pour la livraison
-                        </label>
-                        <textarea id="message" name="message" placeholder="informations utiles : code porte, accès, etc."
-                        class="form-control" rows="4" cols="50">
-                        </textarea>
-                    </div>
-                </fieldset>
+                        <fieldset>
+                            <legend class="text-primary"> Votre adresse de livraison</legend>
+                            <div class="form-group pb-2">
+                                <label for="adresse"> Numéro et Rue </label>
+                                <input class="form-control" id="adresse" type="text" name="adresse" placeholder="14 rue bleue" required/>
+                            </div>
+                            <div class="form-group pb-2">
+                                <label for="code_postal"> Code Postal </label>
+                                <input class="form-control" id="code_postal" type="text" pattern="[0-9]{,5}" name="code_postal" placeholder="75000" required/>
+                            </div>
+                            <div class="form-group pb-2">
+                                <label for="ville"> Ville </label>
+                                <input class="form-control" id="ville" type="text"  name="ville" placeholder="Paris" required/>
+                            </div>
+                            <div class="form-group pb-2">
+                                <label for="informations">
+                                    Informations complémentaires pour la livraison
+                                </label>
+                                <textarea class="form-control" id="informations" type="text" name="informations" placeholder="code porte, accès, etc." rows="4" cols="50">
+                                </textarea>
+                            </div>
+                        </fieldset>
 
-                <fieldset>
-                    <legend class="text-primary">Information de Paiement</legend>
-                    <div class="paiement_detail pb-2">
-                        <label for=numero_de_carte>Numéro de la carte</label>
-                        <input id=numero_de_carte name=numero_de_carte type=text required>
-                        
-                    </div>
-                    <div class="paiement_detail pb-2"> 
-                        <label for=securite>Code de sécurité</label>
-                        <input id=securite name=securite type=text required>
-                        
-                    </div>
-                    <div class="paiement_detail pb-2"> 
-                        <label for=nom_titulaire>Nom du titulaire de la carte</label>
-                        <input id=nom_titulaire name=nom_titulaire type=text placeholder="Dubois Anthony" cols="40" required>
-                </fieldset>
-
-                <div class="basket-confirm text-center p-4">
-                    <a class="btn btn-dark stretched-link p-4" href="confirmation.html">
-                        Je valide mon panier et mes informations
-                    </a>
+                        <fieldset>
+                            <legend class="text-primary">Information de Paiement</legend>
+                            <div class="paiement_detail pb-2">
+                                <label for=numero_de_carte>Numéro de la carte</label>
+                                <input id=numero_de_carte type=text name=numero_de_carte placeholder="1234567890"pattern="[0-9]{,10}" required>   
+                            </div>
+                            <div class="paiement_detail pb-2"> 
+                                <label for=securite>Code de sécurité</label>
+                                <input id=securite type=text name=securite placeholder="123"pattern="[0-9]{,3}" required>  
+                            </div>
+                            <div class="paiement_detail pb-2"> 
+                                <label for=titulaire>Nom du titulaire de la carte</label>
+                                <input id=titulaire type=text name=titulaire placeholder="Dubois Anthony" cols="40" required>
+                        </fieldset> 
+                        <div class="basket-confirm text-center p-4">
+                            <a class="btn btn-dark p-4" href="confirmation.html">
+                                Je valide mon panier et mes informations
+                            </a>
+                        </div>
+                    </form> 
                 </div>
-            </form>
-        </div>
+            </section> 
+            
             
         </main>
+
 
         <!-- footer-->
         <footer class="py-5 bg-secondary">
