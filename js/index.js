@@ -5,7 +5,7 @@ const URL = `http://localhost:3000/api/cameras/`;
 fetch(URL)
   .then((response) => response.json())
   /*test pour verifier connexion */
-  .then(console.info (JSON.stringify))
+  .then((response) => alert(JSON.stringify(response)))
   /*Si erreur de connexion */
   .catch((error) => alert("Erreur : " + error));
 
@@ -18,7 +18,7 @@ Pour chaque produit : utilisation dans l'html de l'id product pour afficher la f
 ****/
 
 //création de la variable qui liste les différentes caméras sous forme d'objet 
-var camerasList = [
+const camerasList = [
   {
     lenses: ["35mm 1.4", "50mm 1.6"],
     _id: "5be1ed3f1c9d44000030b061",
@@ -65,15 +65,18 @@ var camerasList = [
     imageUrl: "http://localhost:3000/images/vcam_5.jpg",
   },
 ];
-console.info (camerasList);
 
-//Création d'une constante qui appelle l'id product dans le html (appel de la vignette)
-const PRODUCTS = document.getElementById("product"); 
+//Création d'une constante qui utilisera l'id product dans le html (appel de la vignette)
+const products = document.getElementById("product");
+
 
 // On parcourt les Produits : pour chacun des produits
-for (const PRODUCTS of everything) {
-  // On crée une vignette
-  const productThumbnail = document.createElement("div",['class': 'product-thumbnail'])
+for (const products of camerasList) {
+  // creation de l'element image
+  let cameraImage = document.createElement("img");
+  console.log(cameraImage);
+  //ajout de la source de l'image à l'élément crée cameraImage
+  cameraImage.src = "imageUrl";
 }
 
 
