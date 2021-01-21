@@ -1,5 +1,5 @@
 /*création de la classe Camera*/
-class Camera { 
+class Camera { /*instanciation de l'object camera */
     constructor(camera){
         this.id = camera._id;
         this.name = camera.name;
