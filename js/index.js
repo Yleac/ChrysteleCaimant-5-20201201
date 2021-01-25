@@ -24,7 +24,7 @@ fetch(URL)
       productContainer.classList.add("mb-4");
       productContainer.classList.add("mb-lg-0");
       productContainer.classList.add("text-center");
-      productContainer.classList.add("border-light");
+      productContainer.classList.add("border-0");
       
       //on crée l'image du produit
       let productImage = document.createElement("img");
@@ -53,8 +53,11 @@ fetch(URL)
 
       // Création du bouton lien vers la page detail produit
       let aTag = document.createElement("a");
-      aTag.setAttribute("href", "product.html");
+      aTag.setAttribute("href", './produit.html');
       aTag.textContent = "Voir détail produit";
+      aTag.addEventListener ("mouseover", function(){this.style.backgroundColor = "black";});
+      aTag.addEventListener("mouseout", function (){this.style.backgroundColor = "gray";});
+
 
       //on ajoute le lien à la vignette
       productContainer.appendChild(aTag);
@@ -64,7 +67,8 @@ fetch(URL)
       aTag.classList.add("btn-secondary");
       aTag.classList.add("stretched-link");
 
-      //Enfin, on ajoute la vignette au conteneur
+
+      //**Enfin, on ajoute la vignette au conteneur**
       productsContainer.appendChild(productContainer);
     }
   })
