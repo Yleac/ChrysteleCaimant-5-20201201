@@ -1,82 +1,73 @@
 /*creation constante pour appel de l'url de l'api cameras */
 const URL = `http://localhost:3000/api/cameras/`;
 
+// declaration de la variable cameras (cf ligne 11)
+let cameras; 
+
 /* connection à l'API */
 fetch(URL)
   .then((response) => response.json())
-  /*test pour verifier connexion */
-  .then((response) => alert(JSON.stringify(response)))
+  .then((response) => {
+    cameras = response; //on rempli la variable cameras avec la reponse (la liste des différentes données cameras dispos dans l'API)
+
+    //Création d'une constante qui utilisera (pointe vers) l'id "product" deja présente ds le html (appel de la vignette)
+    const productsContainer = document.getElementById("products");
+
+    // On parcourt les Produits. Pour chacun des produit de la cameraList :
+    for (const camera of cameras) {
+      //on crée la vignette
+      let productContainer = document.createElement("div");
+      productContainer.classList.add("product");
+
+      //apparence des cartes pour chaque produit (boostrap)
+      productContainer.classList.add("card");
+      productContainer.classList.add("mb-4");
+      productContainer.classList.add("mb-lg-0");
+      productContainer.classList.add("text-center");
+      productContainer.classList.add("border-light");
+      
+      //on crée l'image du produit
+      let productImage = document.createElement("img");
+      productImage.src = camera.imageUrl;
+      productImage.alt = camera.name;
+
+      //on ajoute l'image à la vignette
+      productContainer.appendChild(productImage);
+
+      //on crée le nom du produit
+      let productName = document.createElement("h3");
+      let productNametext = document.createTextNode(camera.name);
+      productName.appendChild(productNametext);
+
+      //on ajoute le h3 à la vignette
+      productContainer.appendChild(productName);
+
+      //on crée le paragraphe pour le prix
+      let productPrice = document.createElement("p");
+      let priceIneuro = (camera.price / 100).toFixed(2);
+      let productPricetext = document.createTextNode(priceIneuro + " EUR");
+      productPrice.appendChild(productPricetext);
+
+      //on ajoute le prix à la vignette
+      productContainer.appendChild(productPricetext);
+
+      // Création du bouton lien vers la page detail produit
+      let aTag = document.createElement("a");
+      aTag.setAttribute("href", "product.html");
+      aTag.textContent = "Voir détail produit";
+
+      //on ajoute le lien à la vignette
+      productContainer.appendChild(aTag);
+
+      //ajout des class boostrap pour apparence bouton (boostrap)
+      aTag.classList.add("btn"); 
+      aTag.classList.add("btn-secondary");
+      aTag.classList.add("stretched-link");
+
+      //Enfin, on ajoute la vignette au conteneur
+      productsContainer.appendChild(productContainer);
+    }
+  })
+
   /*Si erreur de connexion */
   .catch((error) => alert("Erreur : " + error));
-
-
-/*OBJECTIF *** 
-Pour chaque produit : utilisation dans l'html de l'id product pour afficher la fiche produit qui comporte :
--la photo, 
--en h2 le nom du produit, 
--en p la description
-****/
-
-//création de la variable qui liste les différentes caméras sous forme d'objet 
-const camerasList = [
-  {
-    lenses: ["35mm 1.4", "50mm 1.6"],
-    _id: "5be1ed3f1c9d44000030b061",
-    name: "Zurss 50S",
-    price: 49900,
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    imageUrl: "http://localhost:3000/images/vcam_1.jpg",
-  },
-  {
-    lenses: ["50mm 1.8", "60mm 2.8", "24-60mm 2.8/4.5"],
-    _id: "5be1ef211c9d44000030b062",
-    name: "Hirsch 400DTS",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    price: 309900,
-    imageUrl: "http://localhost:3000/images/vcam_2.jpg",
-  },
-  {
-    lenses: ["25mm 4.5"],
-    _id: "5be9bc241c9d440000a730e7",
-    name: "Franck JS 105",
-    price: 209900,
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    imageUrl: "http://localhost:3000/images/vcam_3.jpg",
-  },
-  {
-    lenses: ["50mm 1.7", "35mm 1.4"],
-    _id: "5be9c4471c9d440000a730e8",
-    name: "Kuros TTS",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    price: 159900,
-    imageUrl: "http://localhost:3000/images/vcam_4.jpg",
-  },
-  {
-    lenses: ["50mm 1.4", "35mm 1.8", "28-200mm 2.8/4.5"],
-    _id: "5be9c4c71c9d440000a730e9",
-    name: "Katatone",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    price: 59900,
-    imageUrl: "http://localhost:3000/images/vcam_5.jpg",
-  },
-];
-
-//Création d'une constante qui utilisera l'id product dans le html (appel de la vignette)
-const products = document.getElementById("product");
-
-
-// On parcourt les Produits : pour chacun des produits
-for (const products of camerasList) {
-  // creation de l'element image
-  let cameraImage = document.createElement("img");
-  console.log(cameraImage);
-  //ajout de la source de l'image à l'élément crée cameraImage
-  cameraImage.src = "imageUrl";
-}
-
-
